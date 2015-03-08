@@ -1,6 +1,6 @@
 {
     # Theme information
-    'name': "Theme DCNClean",
+    'name': "DCN's Clean Theme",
     'description': """
     """,
     'category': 'Theme',
@@ -9,12 +9,12 @@
 
     # templates, pages, and snippets
     'data': [
-        'views/pages.xml',
-        'views/options.xml',
-        'views/snippets.xml',
+        #'views/pages.xml',
+        #'views/options.xml',
+        #'views/snippets.xml',
     ],
 
     # Your information
-    'author': "Your Company",
-    'website': "",
+    'author': "sniper7kills@DynamicCode.Ninja",
+    'website': "http://www.dynamiccode.ninja",
 }
