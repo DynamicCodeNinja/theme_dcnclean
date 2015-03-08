@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="theme_dcnclean.layout" name="DCN Layout" primary="True" inherit_id="website.layout">
+			<xpath expr="//head" position="replace">
+				<head>
+					<meta charset="utf-8"/>
+					<!--
+					----	Set Title Variables
+					--->
+					<t t-if="main_object and 'website_meta_title' in main_object and not title">
+						<t t-set="title" t-value="main_object.website_meta_title"/>
+					</t>
+					<t t-if="main_object and 'name' in main_object and not title and not additional_title">
+						<t t-set="additional_title" t-value="main_object.name"/>
+					</t>
+					<t t-if="not title">
+						<t t-set="title"><t t-if="additional_title"><t t-raw="additional_title"/> | </t><t t-esc="(website or res_company).name"/></t>
+					</t>
+					<!--
+					----	Output some Meta Data
+					--->
+					<meta name="viewport" content="initial-scale=1"/>
+					<meta name="description" t-att-content="main_object and 'website_meta_description' in main_object                 and main_object.website_meta_description or website_meta_description"/>
+					<meta name="keywords" t-att-content="main_object and 'website_meta_keywords' in main_object                 and main_object.website_meta_keywords or website_meta_keywords"/>
+					<!--We'll Keep This Here... But It could be considered a Security Risk-->
+					<meta name="generator" content="Odoo"/>
+					<!-- OpenGraph tags for Facebook sharing -->
+					<meta property="og:title" t-att-content="additional_title"/>
+					<meta property="og:site_name" t-att-content="res_company.name"/>
+					<t t-if="main_object and 'plain_content' in main_object and main_object.plain_content">
+						<t t-set="og_description" t-value="main_object.plain_content[0:500]"/>
+						<meta property="og:description" t-att-content="og_description"/>
+						<meta property="og:image" t-att-content="request.httprequest.url_root+'logo.png'"/>
+						<meta property="og:url" t-att-content="request.httprequest.url_root+request.httprequest.path[1:end]"/>
+					</t>
+					<!--
+					----	Output the title
+					--->
+					<title><t t-esc="title"/></title>
+					<!--
+					----	Language Links
+					--->
+					<t t-set="languages" t-value="website.get_languages() if website else None"/>
+					<t t-if="request and request.website_multilang and website">
+						<t t-foreach="website.get_alternate_languages(request.httprequest)" t-as="lang">
+							<link rel="alternate" t-att-hreflang="lang['hreflang']" t-att-href="lang['href']"/>
+						</t>
+					</t>
+					<!--
+					----	Output some Predefiened Assets
+					--->
+					<t t-call-assets="web.assets_common"/>
+					<t t-call-assets="website.assets_frontend"/>
+					<!--
+					----	Output any raw content under the variable head
+					--->
+					<t t-raw="head or ''" name="layout_head"/>
+				</head>
+			</xpath>
+		</template>
+	</data>
+</openerp>
