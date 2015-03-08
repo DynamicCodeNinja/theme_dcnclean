@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="website.theme" name="DCN Clean Theme">
+            <!-- Boostrap Fallback if server can't compute less files -->
+            <link id="bootstrap_css" rel="stylesheet" href="/theme_dcnclean/static/css/bootstrap.css" />
+			<link rel="stylesheet" href="/theme_dcnclean/static/css/bootstrap-theme.css" />
+			<style>
+				/* ----- EDITOR ----- */
+				#oe_main_menu_navbar {
+				  min-height: 34px;
+				  z-index: 1001;
+				  -webkit-border-radius: 0px;
+				  -moz-border-radius: 0px;
+				  -ms-border-radius: 0px;
+				  -o-border-radius: 0px;
+				  border-radius: 0px;
+				  margin-bottom: 0px;
+				}
+				#oe_main_menu_navbar li a, #oe_main_menu_navbar li button {
+				  padding: 4px 8px 4px 8px;
+				  margin-top: 2px;
+				  font-size: 13px;
+				}
+				#oe_main_menu_navbar .navbar-nav.navbar-right:last-child {
+				  margin-right: 0 !important;
+				}
+
+				.css_non_editable_mode_hidden {
+				  display: none !important;
+				}
+				/* ---- HACK FOR COVERING UP CK EDITOR BOGUS P INSERTION --- */
+				.oe_structure.oe_editable.oe_empty:empty, .oe_editable[data-oe-type=html]:empty, .oe_structure.oe_editable.oe_empty > .oe_drop_zone.oe_insert:only-child, [data-oe-type=html] > .oe_drop_zone.oe_insert:only-child {
+				  background-image: url("/website/static/src/img/drag_here.png") !important;
+				}
+
+				.oe_structure.oe_empty:empty, [data-oe-type=html]:empty, .oe_structure.oe_empty > .oe_drop_zone.oe_insert:only-child, [data-oe-type=html] > .oe_drop_zone.oe_insert:only-child {
+				  background-image: none;
+				  background-repeat: no-repeat;
+				  background-position: center;
+				  height: 220px !important;
+				}
+
+				.oe_structure.oe_empty > .oe_drop_zone.oe_insert:only-child, [data-oe-type=html] > .oe_drop_zone.oe_insert:only-child {
+				  position: static;
+				}
+
+				.oe_structure.oe_empty:empty:before, [data-oe-type=html]:empty:before, .oe_structure.oe_empty > .oe_drop_zone.oe_insert:only-child:before, [data-oe-type=html] > .oe_drop_zone.oe_insert:only-child:before {
+				  content: " ";
+				  text-align: center;
+				  display: block;
+				  padding-top: 160px;
+				  padding-bottom: 30px;
+				  color: grey;
+				  font-size: 24px;
+				}
+
+				.oe_structure.oe_editable.oe_empty:empty:before, .oe_editable[data-oe-type=html]:empty:before, .oe_structure.oe_editable.oe_empty > .oe_drop_zone.oe_insert:only-child:before, [data-oe-type=html] > .oe_drop_zone.oe_insert:only-child:before {
+				  content: "Drag Building Blocks Here" !important;
+				}
+			</style>
+        </template>
+    </data>
+</openerp>
